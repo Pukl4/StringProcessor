@@ -14,16 +14,12 @@ namespace StringProcessorApp
 
             for (int i = 0; i < splitRow.Length; i++)
             {
-                if (row.Contains(splitRow[i]))
-                {
-                    do
+                    while (row.Contains(splitRow[i])) 
                     {
                         var ind = row.IndexOf(splitRow[i]);
                         var removed_row = row.Remove(ind, 1);
                         row = removed_row;
                     }
-                    while (row.Contains(splitRow[i]));
-                }
             }
             Console.WriteLine(row);
             return row;
