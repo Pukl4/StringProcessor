@@ -1,29 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StringProcessorApp
 {
     public class CharacterRemover                
     {
-        public static string GetString( string row, string user_input_char)
-        {
-            string[] splitRow = user_input_char.Split(',');
+        public string GetSanitizedString(string row, string[] forbiddenChars)
+        { 
+            var sanitizedString = string.Empty;
 
-            for (int i = 0; i < splitRow.Length; i++)
+            foreach(var character in row)
             {
-                    while (row.Contains(splitRow[i])) 
-                    {
-                        var ind = row.IndexOf(splitRow[i]);
-                        var removed_row = row.Remove(ind, 1);
-                        row = removed_row;
-                    }
+                if (!forbiddenChars.Contains(character.ToString()))
+                {
+                    sanitizedString += character;
+                }
             }
-            Console.WriteLine(row);
-            return row;
+            Console.WriteLine(sanitizedString);
+            return sanitizedString;
         }
-        
     }
 }

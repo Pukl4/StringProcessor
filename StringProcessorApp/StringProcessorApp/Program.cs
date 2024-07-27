@@ -1,7 +1,4 @@
-﻿using System;
-using static System.Net.Mime.MediaTypeNames;
-
-namespace StringProcessorApp
+﻿namespace StringProcessorApp
 {
     public class Program
     {
@@ -15,10 +12,8 @@ namespace StringProcessorApp
         //calculate how many times each character is used in a given string.
         static void Main(string[] args)
         {
-            var CharacterRemover = new CharacterRemover();
-            var StringWithoutChars = CharacterRemover.GetString("afterdark impression", "a,d,c,e,f");
-                
-
+            var characterRemover = new CharacterRemover();
+            var sanitString = characterRemover.GetSanitizedString("afterdark impression", "a,d,c,e,f".Split(","));
         }
     }
 }
